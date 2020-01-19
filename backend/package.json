@@ -1,0 +1,16 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend for the Todo app.",
+  "scripts": {
+    "start": "tsc server.ts; node ./server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "typescript": "^3.7.5"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.2",
+    "nodemon": "^2.0.2"
+  }
+}
