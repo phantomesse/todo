@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Backend for the Todo app.",
   "scripts": {
-    "start": "tsc server.ts; node ./server.js"
+    "start": "tsc server.ts; node server.js",
+    "dev": "tsc --watch & nodemon server.js"
   },
   "dependencies": {
     "express": "^4.17.1",
