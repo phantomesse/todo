@@ -4,7 +4,8 @@
     "module": "commonjs",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "outDir": "build",
   },
-  "include": ["**/*.ts"],
-  "exclude": ["node_modues"]
+  "include": ["*.ts", "backend/**/*.ts"],
+  "exclude": ["node_modules"]
 }
