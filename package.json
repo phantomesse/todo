@@ -17,6 +17,9 @@
     "dev": "ng serve --port=1337 & tsc --p tsconfig.backend.json --watch & nodemon build/server.js",
     "clean": "rm -rf build"
   },
+  "engines": {
+    "node": "9.10.1"
+  },
   "dependencies": {
     "@angular/common": "~8.2.14",
     "@angular/compiler": "~8.2.14",
