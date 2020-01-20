@@ -8,3 +8,17 @@ the frontend and backend.
 * Upload to Heroku
 * Send an HTTP request from backend to frontend
 * Socket IO
+
+## Start prod
+```
+npm start
+```
+
+## Development
+```
+npm install
+```
+
+```
+npm run dev
+```

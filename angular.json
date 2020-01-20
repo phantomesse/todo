@@ -17,14 +17,24 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist",
-            "index": "index.html",
-            "main": "main.ts",
-            "tsConfig": "tsconfig.app.json",
+            "outputPath": "build/frontend",
+            "index": "frontend/index.html",
+            "main": "frontend/main.ts",
+            "tsConfig": "tsconfig.frontend.json",
             "aot": false,
-            "assets": ["favicon.ico", "assets"],
-            "styles": ["styles.scss"],
+            "assets": ["frontend/favicon.ico", "frontend/assets"],
+            "styles": ["frontend/styles.scss"],
             "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "frontend/environments/environment.ts",
+                  "with": "frontend/environments/environment.prod.ts"
+                }
+              ]
+            }
           }
         },
         "serve": {
