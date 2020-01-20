@@ -1,5 +1,12 @@
-$bg-color: #676068;
-$fg-color: #F8F7F8;
+$_gray: #676068;
+$_white: #F8F7F8;
+$_purple: #BEB2C8;
 
-$card-bg-color: $fg-color;
-$card-fg-color: $bg-color;
+$bg-color: $_gray;
+$fg-color: $_white;
+$done-bg-color: $_purple;
+
+$card-bg-color: $_white;
+$card-fg-color: $_gray;
+$done-card-bg-color: rgba($_gray, .5);
+$done-card-fg-color: $_gray;

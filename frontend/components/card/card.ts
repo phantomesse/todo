@@ -20,7 +20,7 @@ export class CardComponent {
     private dataController: DataController,
     private changeDetector: ChangeDetectorRef
   ) {}
-
+  
   @HostBinding('draggable')
   isDraggable: boolean = true;
 
@@ -44,6 +44,7 @@ export class CardComponent {
     this._updateItem();
   }
 
+  @HostBinding('class.done')
   get isDone(): boolean {
     return this._item.isDone;
   }

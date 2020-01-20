@@ -3,8 +3,26 @@
 
 :host {
   background: $card-bg-color;
+  border-radius: $grid / 2;
   color: $card-fg-color;
-  padding: $grid * 2;
-  border-radius: $grid;
-  box-shadow: $grid / 2 $grid / 2 $grid darken($bg-color, 5%);
+
+  &.done {
+    background: $done-card-bg-color;
+    color: $done-card-fg-color;
+
+    input[type='text'] {
+      text-decoration: line-through;
+    }
+  }
+}
+
+input[type='text'] {
+  background: none;
+  border-radius: $grid / 2;
+  border: 0;
+  box-sizing: border-box;
+  color: inherit;
+  font: inherit;
+  padding: $grid * 3 / 2 $grid * 2;
+  width: 100%;
 }

@@ -3,7 +3,8 @@ import {
   Input,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
-  HostListener
+  HostListener,
+  HostBinding
 } from '@angular/core';
 import { ToDoItemModel } from '../../models/todo-item-model';
 import { DataController } from '../../controllers/data-controller';

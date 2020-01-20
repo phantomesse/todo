@@ -5,7 +5,8 @@
 html,
 body {
   @include body-font;
-  background: $bg-color;
+  background: $bg-color url('assets/bg.jpg');
+  background-size: cover;
   border: 0;
   color: $fg-color;
   height: 100%;
