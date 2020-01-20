@@ -2,6 +2,7 @@ import { Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { DataController } from '../controllers/data-controller';
+import { ToDoItemModel } from '../models/todo-item-model';
 
 @Component({
   selector: 'root',
@@ -10,7 +11,7 @@ import { DataController } from '../controllers/data-controller';
 })
 export class RootComponent {
   socketIoScriptPath: string;
-  toDoItems: { name: string; isDone: boolean }[] = [];
+  toDoItems: ToDoItemModel[] = [];
 
   constructor(dataController: DataController) {
     this.socketIoScriptPath = dataController.socketIoScriptPath;
