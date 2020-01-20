@@ -19,7 +19,7 @@
     "clean": "rm -rf build"
   },
   "engines": {
-    "node": "9.10.1",
+    "node": "12.14.1",
     "npm": "6.13.4"
   },
   "dependencies": {
