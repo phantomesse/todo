@@ -24,9 +24,6 @@ if (!isProd) {
 
 // Serve the Angular app.
 app.use(express.static('build/frontend'));
-app.get('/', function(_, response) {
-  response.send('index.html');
-});
 
 // Returns all todo list items.
 app.get('/get', (request, response) => {

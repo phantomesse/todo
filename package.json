@@ -13,13 +13,14 @@
   },
   "homepage": "https://github.com/phantomesse/todo#readme",
   "scripts": {
-    "postinstall": "ng build --prod; tsc --p tsconfig.backend.json",
+    "postinstall": "ng build --aot --prod; tsc --p tsconfig.backend.json",
     "start": "node build/server.js --prod",
     "dev": "ng serve --port=1337 & tsc --p tsconfig.backend.json --watch & nodemon build/server.js",
     "clean": "rm -rf build"
   },
   "engines": {
-    "node": "9.10.1"
+    "node": "9.10.1",
+    "npm": "6.13.4"
   },
   "dependencies": {
     "@angular/common": "~8.2.14",
