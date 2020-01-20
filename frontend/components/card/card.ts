@@ -1,11 +1,8 @@
 import {
   Component,
-  NgModule,
   Input,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
-  Output,
-  EventEmitter,
   HostBinding
 } from '@angular/core';
 import { ToDoItemModel } from '../../models/todo-item-model';
@@ -60,9 +57,3 @@ export class CardComponent {
     this.dataController.updateToDoItem(this._item);
   }
 }
-
-@NgModule({
-  declarations: [CardComponent],
-  bootstrap: [CardComponent]
-})
-export class CardComponentModule {}

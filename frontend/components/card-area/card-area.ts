@@ -1,13 +1,10 @@
 import {
   Component,
-  NgModule,
   Input,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
-  HostBinding,
   HostListener
 } from '@angular/core';
-import { CardComponent } from '../card/card';
 import { ToDoItemModel } from '../../models/todo-item-model';
 import { DataController } from '../../controllers/data-controller';
 
@@ -72,9 +69,3 @@ export class CardAreaComponent {
     this.changeDetector.markForCheck();
   }
 }
-
-@NgModule({
-  declarations: [CardAreaComponent, CardComponent],
-  bootstrap: [CardAreaComponent]
-})
-export class CardAreaComponentModule {}
