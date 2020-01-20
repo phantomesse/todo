@@ -11,7 +11,7 @@ the frontend and backend.
 
 ## Start prod
 ```
-npm start
+npm run postinstall; npm start
 ```
 
 ## Development
