@@ -1,7 +1,8 @@
 // Manages the data within the app.
 export class DataController {
   toDoItems: ToDoItem[] = [
-    new ToDoItem('Finish writing this app!', false)
+    new ToDoItem('Finish writing this app!', false),
+    new ToDoItem('Read a book', true)
   ];
 }
 
