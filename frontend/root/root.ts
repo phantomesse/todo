@@ -9,9 +9,11 @@ import { DataController } from '../controllers/data-controller';
   styleUrls: ['./root.scss']
 })
 export class RootComponent {
+  socketIoScriptPath: string;
   toDoItems: { name: string; isDone: boolean }[] = [];
 
   constructor(dataController: DataController) {
+    this.socketIoScriptPath = dataController.socketIoScriptPath;
     dataController.getToDoItems().then(
       items => this.toDoItems = items,
       error => console.log(error)

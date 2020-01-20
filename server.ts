@@ -1,5 +1,7 @@
 import express from 'express';
 import cors from 'cors';
+import {Server} from 'http';
+import socketIO from 'socket.io';
 import { DataController } from './backend/data-controller';
 
 const dataController = new DataController();
@@ -31,7 +33,14 @@ app.get('/get', (request, response) => {
 });
 
 // Listen on port.
-app.listen(port, () => {
+const server = new Server(app);
+server.listen(port, () => {
   if (isProd) console.log(`Live at http://localhost:${port}!`);
   else console.log(`Backend running on http://localhost:${port}`);
+});
+
+// Socket.IO
+let io = socketIO(server);
+io.on('connection', (socket) => {
+  console.log('user connected');
 });

@@ -15,6 +15,7 @@
   "scripts": {
     "postinstall": "ng build --aot --prod; tsc --p tsconfig.backend.json",
     "start": "node build/server.js --prod",
+    "prod": "npm run postinstall; npm start",
     "dev": "ng serve --port=1337 & tsc --p tsconfig.backend.json --watch & nodemon build/server.js",
     "clean": "rm -rf build"
   },
@@ -23,18 +24,20 @@
     "npm": "6.13.4"
   },
   "dependencies": {
+    "@angular-devkit/build-angular": "~0.803.23",
+    "@angular/cli": "~8.3.23",
     "@angular/common": "~8.2.14",
     "@angular/compiler": "~8.2.14",
+    "@angular/compiler-cli": "~8.2.14",
     "@angular/core": "~8.2.14",
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "socket.io": "^2.3.0",
+    "socket.io-client": "^2.3.0",
     "typescript": "~3.4.5",
-    "@angular/cli": "~8.3.23",
-    "@angular/compiler-cli": "~8.2.14",
-    "@angular-devkit/build-angular": "~0.803.23",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
