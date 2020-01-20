@@ -4,9 +4,6 @@ CSS and the app uses both HTTP requests and Socket.IO to communicate between
 the frontend and backend.
 
 # TODO
-* Connect frontend and backend somehow
-* Upload to Heroku
-* Send an HTTP request from backend to frontend
 * Socket IO
 
 ## Start prod
