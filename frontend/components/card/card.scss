@@ -1,0 +1,10 @@
+@import '../../resources/colors';
+@import '../../resources/dimensions';
+
+:host {
+  background: $card-bg-color;
+  color: $card-fg-color;
+  padding: $grid * 2;
+  border-radius: $grid;
+  box-shadow: $grid / 2 $grid / 2 $grid darken($bg-color, 5%);
+}

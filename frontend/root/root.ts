@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { DataController } from '../controllers/data-controller';
 import { ToDoItemModel } from '../models/todo-item-model';
+import { CardComponent } from '../components/card/card';
 
 @Component({
   selector: 'root',
@@ -23,7 +24,7 @@ export class RootComponent {
 }
 
 @NgModule({
-  declarations: [RootComponent],
+  declarations: [RootComponent, CardComponent],
   imports: [BrowserModule, HttpClientModule],
   providers: [DataController],
   bootstrap: [RootComponent]

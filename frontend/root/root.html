@@ -1,8 +1,7 @@
 <h1>Todo</h1>
 
-<div class="card" *ngFor="let item of toDoItems">
-  <input type="checkbox" [checked]="item.isDone" />
-  <span>{{item.name}}</span>
+<div class="card-wrapper">
+  <card *ngFor="let item of toDoItems" [item]="item"></card>
 </div>
 
 <script [src]="socketIoScriptPath"></script>
