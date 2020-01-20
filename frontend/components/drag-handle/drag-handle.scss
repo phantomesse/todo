@@ -1,0 +1,23 @@
+@import '../../resources/colors';
+@import '../../resources/dimensions';
+
+$_square-size: $grid * 2 / 3;
+
+:host {
+  cursor: grabbing;
+  display: grid;
+  grid-gap: $grid / 4;
+  grid-template-columns: $_square-size $_square-size $_square-size;
+  grid-template-rows: $_square-size $_square-size $_square-size;
+  height: min-content;
+  width: min-content;
+
+  &.done div {
+    background: $done-drag-handle-color;
+  }
+}
+
+div {
+  background: $drag-handle-color;
+  border-radius: 1px;
+}

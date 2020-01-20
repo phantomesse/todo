@@ -2,9 +2,12 @@
 @import '../../resources/dimensions';
 
 :host {
+  align-items: center;
   background: $card-bg-color;
   border-radius: $grid / 2;
   color: $card-fg-color;
+  display: flex;
+  padding-right: $grid * 2;
 
   &.done {
     background: $done-card-bg-color;
