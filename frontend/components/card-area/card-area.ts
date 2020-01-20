@@ -3,7 +3,9 @@ import {
   NgModule,
   Input,
   ChangeDetectionStrategy,
-  ChangeDetectorRef
+  ChangeDetectorRef,
+  HostBinding,
+  HostListener
 } from '@angular/core';
 import { CardComponent } from '../card/card';
 import { ToDoItemModel } from '../../models/todo-item-model';
@@ -20,6 +22,17 @@ export class CardAreaComponent {
     private dataController: DataController,
     private changeDetector: ChangeDetectorRef
   ) {}
+
+  @HostListener('dragover', ['$event'])
+  onDragOver(event): void {
+    event.preventDefault();
+  }
+
+  @HostListener('drop', ['$event'])
+  onDrop(event): void {
+    event.preventDefault();
+    console.log(event);
+  }
 
   @Input()
   set isDone(isDone: boolean) {
@@ -42,15 +55,15 @@ export class CardAreaComponent {
   }
 
   private _updateToDoItem(
-    updatedToDoItem: ToDoItemModel, isDone: boolean
+    updatedToDoItem: ToDoItemModel,
+    isDone: boolean
   ): void {
     if (
       updatedToDoItem.isDone === isDone &&
       !this.idToToDoItems.has(updatedToDoItem.id)
     ) {
       this.idToToDoItems.set(updatedToDoItem.id, updatedToDoItem);
-    }
-    else if (
+    } else if (
       updatedToDoItem.isDone !== isDone &&
       this.idToToDoItems.has(updatedToDoItem.id)
     ) {

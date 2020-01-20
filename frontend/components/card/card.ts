@@ -5,7 +5,8 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Output,
-  EventEmitter
+  EventEmitter,
+  HostBinding
 } from '@angular/core';
 import { ToDoItemModel } from '../../models/todo-item-model';
 import { DataController } from '../../controllers/data-controller';
@@ -22,6 +23,9 @@ export class CardComponent {
     private dataController: DataController,
     private changeDetector: ChangeDetectorRef
   ) {}
+
+  @HostBinding('draggable')
+  isDraggable: boolean = true;
 
   @Input()
   set item(item: ToDoItemModel) {
