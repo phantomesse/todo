@@ -25,6 +25,11 @@ export class CardComponent {
     return this._item.name;
   }
 
+  set name(name: string) {
+    this._item.name = name;
+    this.dataController.updateToDoItem(this._item);
+  }
+
   get isDone(): boolean {
     return this._item.isDone;
   }
