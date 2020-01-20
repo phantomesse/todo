@@ -1,7 +1,6 @@
 <h1>Todo</h1>
 
-<div class="card-wrapper">
-  <card *ngFor="let item of toDoItems" [item]="item"></card>
-</div>
+<card-area [isDone]="false"></card-area>
+<card-area [isDone]="true"></card-area>
 
 <script [src]="socketIoScriptPath"></script>

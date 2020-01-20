@@ -1,22 +1,35 @@
-import { Component, NgModule, Input } from '@angular/core';
+import {
+  Component,
+  NgModule,
+  Input,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Output,
+  EventEmitter
+} from '@angular/core';
 import { ToDoItemModel } from '../../models/todo-item-model';
 import { DataController } from '../../controllers/data-controller';
 
+// Contains a single todo item.
 @Component({
   selector: 'card',
   templateUrl: './card.html',
-  styleUrls: ['./card.scss']
+  styleUrls: ['./card.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CardComponent {
-  constructor(private dataController: DataController) {}
+  constructor(
+    private dataController: DataController,
+    private changeDetector: ChangeDetectorRef
+  ) {}
 
   @Input()
   set item(item: ToDoItemModel) {
     this._item = item;
-    this.dataController.listenForUpdates(
-      item.id,
-      updatedItem => (this._item = updatedItem)
-    );
+    this.dataController.listenForUpdates(item.id, updatedItem => {
+      this._item = updatedItem;
+      this.changeDetector.markForCheck();
+    });
   }
 
   private _item: ToDoItemModel;
@@ -27,7 +40,7 @@ export class CardComponent {
 
   set name(name: string) {
     this._item.name = name;
-    this.dataController.updateToDoItem(this._item);
+    this._updateItem();
   }
 
   get isDone(): boolean {
@@ -36,6 +49,10 @@ export class CardComponent {
 
   set isDone(isDone: boolean) {
     this._item.isDone = isDone;
+    this._updateItem();
+  }
+
+  _updateItem() : void {
     this.dataController.updateToDoItem(this._item);
   }
 }

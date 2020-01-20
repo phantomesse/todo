@@ -12,10 +12,7 @@ h1 {
   @include h1-font;
 }
 
-.card-wrapper {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax($grid * 20, 1fr));
-  grid-gap: $grid * 3;
-  padding: $grid * 3;
-  box-sizing: border-box;
+card-area:first-of-type {
+  background: pink;
+
 }

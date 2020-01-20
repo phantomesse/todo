@@ -1,0 +1,9 @@
+@import '../../resources/dimensions';
+
+:host {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($grid * 20, 1fr));
+  grid-gap: $grid * 3;
+  padding: $grid * 3;
+  box-sizing: border-box;
+}
