@@ -42,8 +42,6 @@ server.listen(port, () => {
 // Socket.IO
 let io = socketIO(server);
 io.on('connection', (socket) => {
-  console.log('user connected');
-
   socket.on('update', (updatedToDoItem) {
     dataController.updateToDoItem(updatedToDoItem);
     socket.broadcast.emit('updated', updatedToDoItem);
