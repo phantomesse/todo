@@ -1,2 +1,2 @@
-<input type="checkbox" [checked]="item.isDone" />
-<span>{{item.name}}</span>
+<input type="checkbox" [checked]="isDone" (change)="isDone = !isDone" />
+<span>{{name}}</span>

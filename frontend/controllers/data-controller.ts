@@ -11,6 +11,7 @@ export class DataController {
   private http: HttpClient;
   private backendUrlPrefix: string;
   public socketIoScriptPath: string;
+  private socket;
 
   constructor(http: HttpClient) {
     this.http = http;
@@ -18,7 +19,7 @@ export class DataController {
       ? '/'
       : 'http://localhost:1338/';
     this.socketIoScriptPath = `${this.backendUrlPrefix}socket.io/socket.io.js`;
-    io(this.backendUrlPrefix);
+    this.socket = io(this.backendUrlPrefix);
   }
 
   getToDoItems(): Promise<ToDoItemModel[]> {
@@ -27,6 +28,19 @@ export class DataController {
         (response: ToDoItemModel[]) => resolve(response),
         error => reject(error)
       );
+    });
+  }
+
+  updateToDoItem(updatedToDoItem: ToDoItemModel): void {
+    this.socket.emit('update', updatedToDoItem);
+  }
+
+  listenForUpdates(
+    toDoItemId: string,
+    onUpdate: (updatedToDoItem: ToDoItemModel) => void
+  ): void {
+    this.socket.on('updated', function(updatedToDoItem) {
+      if (updatedToDoItem.id === toDoItemId) onUpdate(updatedToDoItem);
     });
   }
 }

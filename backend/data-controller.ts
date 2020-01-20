@@ -5,19 +5,30 @@ import path from 'path';
 export class DataController {
   static _dataFilePath = path.join(__dirname, '../data/todo.md');
 
-  toDoItems: ToDoItem[] = [];
+  idToToDoItem: Map<string, ToDoItemModel> = new Map();
 
   constructor() {
     let data = fs
       .readFileSync(DataController._dataFilePath, 'utf8')
       .split('\n')
       .filter(line => line.length > 0);
-    this.toDoItems = data.map((line, index) => {
+    let toDoItems = data.map((line, index) => {
       let id = this._generateId(index);
       let isDone = line.startsWith('✔');
       let name = (isDone ? line.substr('✔'.length) : line).trim();
-      return new ToDoItem(id, name, isDone);
+      return new ToDoItemModel(id, name, isDone);
     });
+    for (let item of toDoItems) {
+      this.idToToDoItem.set(item.id, item);
+    }
+  }
+
+  get toDoItems() : ToDoItemModel[] {
+    return [...this.idToToDoItem.values()];
+  }
+
+  updateToDoItem(updatedToDoItem: ToDoItemModel) {
+    this.idToToDoItem.set(updatedToDoItem.id, updatedToDoItem);
   }
 
   _generateId(index?: number): string {
@@ -30,7 +41,7 @@ export class DataController {
   }
 }
 
-class ToDoItem {
+class ToDoItemModel {
   id: string;
   name: string;
   isDone: boolean;
