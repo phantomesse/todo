@@ -1,4 +1,11 @@
+@import '../resources/fonts';
+
 :host {
-  background: pink;
-  display: block;
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+h1 {
+  @include h1-font;
 }

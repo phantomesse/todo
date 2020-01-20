@@ -1,0 +1,12 @@
+$_body-font-family: 'Montserrat', sans-serif;
+$_header-font-family: 'Bebas Neue', cursive;
+
+@mixin body-font {
+  font: 16px $_body-font-family;
+}
+
+@mixin h1-font {
+  font: 32px $_header-font-family;
+  margin: 0;
+  padding: 0;
+}

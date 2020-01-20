@@ -1,9 +1,13 @@
 /** Global styles go here. */
+@import 'resources/colors';
+@import 'resources/fonts';
 
 html,
 body {
-  background: blue;
+  @include body-font;
+  background: $bg-color;
   border: 0;
+  color: $fg-color;
   height: 100%;
   margin: 0;
   padding: 0;
