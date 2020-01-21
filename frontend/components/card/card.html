@@ -1,3 +1,4 @@
 <!-- <input type="checkbox" [checked]="isDone" (change)="isDone = !isDone" /> -->
-<input #nameInput type="text" [value]="name" (change)="name = nameInput.value" />
+<input #nameInput type="text" [value]="name" (change)="name = nameInput.value"
+  (click)="nameInput.select()" />
 <drag-handle></drag-handle>

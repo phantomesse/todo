@@ -7,6 +7,7 @@
   border-radius: $grid / 2;
   color: $card-fg-color;
   display: flex;
+  border: 2px transparent solid;
   padding-right: $grid * 2;
 
   &.done {
@@ -15,6 +16,33 @@
 
     input[type='text'] {
       text-decoration: line-through;
+    }
+  }
+
+  &.dragging {
+    background: none;
+    border: 2px $card-bg-color dashed;
+    color: $card-bg-color;
+
+    &.done {
+      border-color: $done-card-bg-color;
+      color: $done-card-bg-color;
+    }
+
+    drag-handle {
+      display: none;
+    }
+  }
+
+  &.drag-ghost {
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform: translateX(-200%) translateY(-200%);
+    width: max-content;
+
+    drag-handle {
+      display: none;
     }
   }
 }
@@ -26,6 +54,8 @@ input[type='text'] {
   box-sizing: border-box;
   color: inherit;
   font: inherit;
+  margin-right: $grid * 2;
   padding: $grid * 3 / 2 $grid * 2;
   width: 100%;
+  outline: none;
 }

@@ -14,3 +14,8 @@ body {
   padding: 0;
   width: 100%;
 }
+
+::selection {
+  color: $selection-fg-color;
+  background: $selection-bg-color;
+}

@@ -21,6 +21,7 @@ h1 {
   margin: 0;
   opacity: .5;
   padding: 0 $grid * 3;
+  user-select: none;
 }
 
 card-area:first-of-type {
