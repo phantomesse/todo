@@ -48,6 +48,29 @@ export class CardComponent {
     this.isDragging = false;
   }
 
+  @HostListener('touchmove', ['$event'])
+  onTouchMove(event: TouchEvent) {
+    let x = event.targetTouches[0].pageX;
+    let y = event.targetTouches[0].pageY;
+
+    if (this.ghostElement === undefined) {
+      this.ghostElement = (this.elementRef
+        .nativeElement as HTMLElement).cloneNode(true) as HTMLElement;
+      this.ghostElement.classList.add('touch-ghost');
+      document.body.append(this.ghostElement);
+    }
+    this.ghostElement.style.left = `${x}px`;
+    this.ghostElement.style.top = `${y}px`;
+    this.isDragging = true;
+  }
+
+  @HostListener('touchend')
+  onTouchEnd() {
+    this.ghostElement.remove();
+    this.ghostElement = undefined;
+    this.isDragging = false;
+  }
+
   @Input()
   set item(item: ToDoItemModel) {
     this._item = item;
