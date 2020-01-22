@@ -6,6 +6,7 @@ import { ToDoItemModel } from '../models/todo-item-model';
 import { CardAreaComponent } from '../components/card-area/card-area';
 import { CardComponent } from '../components/card/card';
 import {DragHandleComponent} from '../components/drag-handle/drag-handle';
+import { DragController } from '../controllers/drag-controller';
 
 @Component({
   selector: 'root',
@@ -24,7 +25,7 @@ export class RootComponent {
 @NgModule({
   declarations: [RootComponent, CardAreaComponent, CardComponent, DragHandleComponent],
   imports: [BrowserModule, HttpClientModule],
-  providers: [DataController],
+  providers: [DataController, DragController],
   bootstrap: [RootComponent]
 })
 export class RootComponentModule {}

@@ -4,9 +4,11 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   HostListener,
+  ElementRef
 } from '@angular/core';
 import { ToDoItemModel } from '../../models/todo-item-model';
 import { DataController } from '../../controllers/data-controller';
+import { DragController } from '../../controllers/drag-controller';
 
 @Component({
   selector: 'card-area',
@@ -16,7 +18,9 @@ import { DataController } from '../../controllers/data-controller';
 })
 export class CardAreaComponent {
   constructor(
+    private elementRef: ElementRef,
     private dataController: DataController,
+    private _dragController: DragController,
     private changeDetector: ChangeDetectorRef
   ) {}
 
@@ -28,11 +32,23 @@ export class CardAreaComponent {
   @HostListener('drop', ['$event'])
   onDrop(event): void {
     event.preventDefault();
-    console.log(event);
+    this._dragController.drop(this._isDone);
+  }
+
+  @HostListener('touchend', ['$event'])
+  onTouchEnd(event: TouchEvent) {
+    let x = event.changedTouches[0].pageX;
+    let y = event.changedTouches[0].pageY;
+    let rect = (this.elementRef
+      .nativeElement as HTMLElement).getBoundingClientRect();
+    let isCardInArea: boolean =
+      x > rect.left && x < rect.right && y > rect.top && y < rect.bottom;
+    this._dragController.drop(isCardInArea ? this._isDone : !this._isDone);
   }
 
   @Input()
   set isDone(isDone: boolean) {
+    this._isDone = isDone;
     this.dataController.getToDoItems().then((toDoItems: ToDoItemModel[]) => {
       toDoItems = toDoItems.filter(item => item.isDone === isDone);
       for (let item of toDoItems) {
@@ -44,6 +60,8 @@ export class CardAreaComponent {
       this.changeDetector.markForCheck();
     });
   }
+
+  _isDone: boolean;
 
   idToToDoItems: Map<string, ToDoItemModel> = new Map();
 

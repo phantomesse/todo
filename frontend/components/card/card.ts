@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { ToDoItemModel } from '../../models/todo-item-model';
 import { DataController } from '../../controllers/data-controller';
+import { DragController } from '../../controllers/drag-controller';
 
 // Contains a single todo item.
 @Component({
@@ -21,6 +22,7 @@ export class CardComponent {
   constructor(
     private elementRef: ElementRef,
     private dataController: DataController,
+    private _dragController: DragController,
     private changeDetector: ChangeDetectorRef
   ) {}
 
@@ -40,6 +42,7 @@ export class CardComponent {
     document.body.append(this.ghostElement);
     event.dataTransfer.setDragImage(this.ghostElement, 0, 0);
     this.isDragging = true;
+    this._dragController.startDrag(this);
   }
 
   @HostListener('dragend')
@@ -62,6 +65,7 @@ export class CardComponent {
     this.ghostElement.style.left = `${x}px`;
     this.ghostElement.style.top = `${y}px`;
     this.isDragging = true;
+    this._dragController.startDrag(this);
   }
 
   @HostListener('touchend')
