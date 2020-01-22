@@ -66,7 +66,7 @@ export class CardComponent {
 
   @HostListener('touchend')
   onTouchEnd() {
-    this.ghostElement.remove();
+    if (this.ghostElement !== undefined) this.ghostElement.remove();
     this.ghostElement = undefined;
     this.isDragging = false;
   }
